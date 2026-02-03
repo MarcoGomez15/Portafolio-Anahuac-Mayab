@@ -15,12 +15,24 @@ Usuario::Usuario(string n, string a, int e) {
   this->edad = e;
 }
 // Definir los setter y getter
-void Usuario::setNombre(string n) { this->nombre = n; }
-string Usuario::getNombre() { return this->nombre; }
-void Usuario::setApellidos(string a) { this->apellidos = a; }
-string Usuario::getApellidos() { return this->apellidos; }
-void Usuario::setEdad(int e) { this->edad = e; }
-int Usuario::getEdad() { return this->edad; }
+void Usuario::setNombre(string n) {
+   this->nombre = n; 
+  }
+string Usuario::getNombre() {
+   return this->nombre; 
+  }
+void Usuario::setApellidos(string a) {
+   this->apellidos = a; 
+  }
+string Usuario::getApellidos() {
+   return this->apellidos; 
+  }
+void Usuario::setEdad(int e) {
+   this->edad = e; 
+  }
+int Usuario::getEdad() {
+   return this->edad; 
+  }
 
 // Definir los metodos
 void Usuario::iniciarSesion() {
