@@ -1,0 +1,5 @@
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionC#/programa/obj/Debug/net10.0/programa.GeneratedMSBuildEditorConfig.editorconfig
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionC#/programa/obj/Debug/net10.0/programa.AssemblyInfoInputs.cache
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionC#/programa/obj/Debug/net10.0/programa.AssemblyInfo.cs
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionC#/programa/obj/Debug/net10.0/programa.csproj.CoreCompileInputs.cache
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionC#/programa/obj/Debug/net10.0/programa.sourcelink.json
