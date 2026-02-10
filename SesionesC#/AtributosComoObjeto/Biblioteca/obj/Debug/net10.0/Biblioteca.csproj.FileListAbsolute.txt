@@ -1,0 +1,15 @@
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/AtributosComoObjeto/Biblioteca/bin/Debug/net10.0/Biblioteca
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/AtributosComoObjeto/Biblioteca/bin/Debug/net10.0/Biblioteca.deps.json
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/AtributosComoObjeto/Biblioteca/bin/Debug/net10.0/Biblioteca.runtimeconfig.json
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/AtributosComoObjeto/Biblioteca/bin/Debug/net10.0/Biblioteca.dll
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/AtributosComoObjeto/Biblioteca/bin/Debug/net10.0/Biblioteca.pdb
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/AtributosComoObjeto/Biblioteca/obj/Debug/net10.0/Biblioteca.GeneratedMSBuildEditorConfig.editorconfig
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/AtributosComoObjeto/Biblioteca/obj/Debug/net10.0/Biblioteca.AssemblyInfoInputs.cache
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/AtributosComoObjeto/Biblioteca/obj/Debug/net10.0/Biblioteca.AssemblyInfo.cs
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/AtributosComoObjeto/Biblioteca/obj/Debug/net10.0/Biblioteca.csproj.CoreCompileInputs.cache
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/AtributosComoObjeto/Biblioteca/obj/Debug/net10.0/Biblioteca.sourcelink.json
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/AtributosComoObjeto/Biblioteca/obj/Debug/net10.0/Biblioteca.dll
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/AtributosComoObjeto/Biblioteca/obj/Debug/net10.0/refint/Biblioteca.dll
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/AtributosComoObjeto/Biblioteca/obj/Debug/net10.0/Biblioteca.pdb
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/AtributosComoObjeto/Biblioteca/obj/Debug/net10.0/Biblioteca.genruntimeconfig.cache
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/AtributosComoObjeto/Biblioteca/obj/Debug/net10.0/ref/Biblioteca.dll
