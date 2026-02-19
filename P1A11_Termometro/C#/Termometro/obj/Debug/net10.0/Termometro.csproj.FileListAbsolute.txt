@@ -1,0 +1,15 @@
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/P1A11_Termometro/C#/Termometro/bin/Debug/net10.0/Termometro
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/P1A11_Termometro/C#/Termometro/bin/Debug/net10.0/Termometro.deps.json
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/P1A11_Termometro/C#/Termometro/bin/Debug/net10.0/Termometro.runtimeconfig.json
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/P1A11_Termometro/C#/Termometro/bin/Debug/net10.0/Termometro.dll
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/P1A11_Termometro/C#/Termometro/bin/Debug/net10.0/Termometro.pdb
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/P1A11_Termometro/C#/Termometro/obj/Debug/net10.0/Termometro.GeneratedMSBuildEditorConfig.editorconfig
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/P1A11_Termometro/C#/Termometro/obj/Debug/net10.0/Termometro.AssemblyInfoInputs.cache
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/P1A11_Termometro/C#/Termometro/obj/Debug/net10.0/Termometro.AssemblyInfo.cs
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/P1A11_Termometro/C#/Termometro/obj/Debug/net10.0/Termometro.csproj.CoreCompileInputs.cache
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/P1A11_Termometro/C#/Termometro/obj/Debug/net10.0/Termometro.sourcelink.json
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/P1A11_Termometro/C#/Termometro/obj/Debug/net10.0/Termometro.dll
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/P1A11_Termometro/C#/Termometro/obj/Debug/net10.0/refint/Termometro.dll
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/P1A11_Termometro/C#/Termometro/obj/Debug/net10.0/Termometro.pdb
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/P1A11_Termometro/C#/Termometro/obj/Debug/net10.0/Termometro.genruntimeconfig.cache
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/P1A11_Termometro/C#/Termometro/obj/Debug/net10.0/ref/Termometro.dll
