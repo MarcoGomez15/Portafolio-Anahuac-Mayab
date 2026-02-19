@@ -1,6 +1,5 @@
 #include "../ArchivosDeEncabezado/Biblioteca.h"
 #include <string>
-#include <iostream>
 using namespace std;
 
 Autor::Autor(string nombre, string nacionalidad){

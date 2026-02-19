@@ -25,7 +25,7 @@ int main() {
 
     cout << "\nIngrese el monto del deposito para la cuenta2: ";
     cin >> monto;
-    cout << "agregando " << monto << " al saldo de la cuenta2" << endl;
+    cout << "\nagregando " << monto << " al saldo de la cuenta2" << endl;
     cuenta2.depositar(monto);
 
     cout << "\nSaldo de " << cuenta1.getNombre() << ": $" << cuenta1.getSaldo() << endl;

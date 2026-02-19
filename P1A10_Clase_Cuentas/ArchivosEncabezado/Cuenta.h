@@ -1,18 +1,15 @@
-#ifndef CUENTA_H
-#define CUENTA_H
-
+#pragma once
 #include <string>
+using namespace std;
 
 class Cuenta {
 public:
-    Cuenta(std::string nombreCuenta, double saldoInicial);
+    Cuenta(string nombreCuenta, double saldoInicial);
     void depositar(double monto);
     double getSaldo() const;
-    void setNombre(std::string nombreCuenta);
-    std::string getNombre() const;
+    void setNombre(string nombreCuenta);
+    string getNombre() const;
 private:
-    std::string nombre;
+    string nombre;
     double saldo;
 };
-
-#endif
