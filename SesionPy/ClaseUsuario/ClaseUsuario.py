@@ -28,12 +28,10 @@ class Usuario:
         self.__edad = e
 
     def iniciarSesion(self):
-        print("El usuario ", self.nombre, " esta iniciando sesión.")
+        return f"El usuario {self.nombre} esta iniciando sesión."
 
     def cerrarSesion(self):
-        print("El usuario ", self.nombre, " ha cerrando la sesión.")
+        return f"El usuario {self.nombre} ha cerrando la sesión."
 
     def hacerReporte(self):
-        print("Reporte de usuario")
-        print("Nombre completo: ", self.nombre, " ", self.apellidos)
-        print("Edad: ", self.edad)
+        return f"Reporte de usuario\nNombre completo: {self.nombre} {self.apellidos}\nEdad: {self.edad}"
