@@ -15,8 +15,8 @@ maestra.apellidos = simpledialog.askstring("Maestra", "Ingrese el apellido")
 maestra.edad = simpledialog.askinteger("Maestra", "Ingrese la edad")
 
 messagebox.showinfo("Maestra", maestra.iniciarSesion())
-messagebox.showinfo("Maestra", maestra.cerrarSesion())
 messagebox.showinfo("Maestra", maestra.hacerReporte())
+messagebox.showinfo("Maestra", maestra.cerrarSesion())
 
 #alumno = Usuario("Tom", "Cruise", 64)
 
