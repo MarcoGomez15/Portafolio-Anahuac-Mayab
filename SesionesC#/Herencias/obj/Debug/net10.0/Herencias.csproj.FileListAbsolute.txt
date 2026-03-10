@@ -1,0 +1,15 @@
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/Herencias/bin/Debug/net10.0/Herencias
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/Herencias/bin/Debug/net10.0/Herencias.deps.json
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/Herencias/bin/Debug/net10.0/Herencias.runtimeconfig.json
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/Herencias/bin/Debug/net10.0/Herencias.dll
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/Herencias/bin/Debug/net10.0/Herencias.pdb
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/Herencias/obj/Debug/net10.0/Herencias.GeneratedMSBuildEditorConfig.editorconfig
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/Herencias/obj/Debug/net10.0/Herencias.AssemblyInfoInputs.cache
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/Herencias/obj/Debug/net10.0/Herencias.AssemblyInfo.cs
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/Herencias/obj/Debug/net10.0/Herencias.csproj.CoreCompileInputs.cache
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/Herencias/obj/Debug/net10.0/Herencias.sourcelink.json
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/Herencias/obj/Debug/net10.0/Herencias.dll
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/Herencias/obj/Debug/net10.0/refint/Herencias.dll
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/Herencias/obj/Debug/net10.0/Herencias.pdb
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/Herencias/obj/Debug/net10.0/Herencias.genruntimeconfig.cache
+/Users/marcoantoniogomezfuentes/Desktop/Escuela/Lenguajes Orientados-a-Objetos/Portafolio-Anahuac-Mayab/SesionesC#/Herencias/obj/Debug/net10.0/ref/Herencias.dll

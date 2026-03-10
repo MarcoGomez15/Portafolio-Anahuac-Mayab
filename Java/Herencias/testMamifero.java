@@ -9,9 +9,8 @@ public class testMamifero {
         System.out.println(Michi);
         System.out.println("");
         System.out.println(Lola);
+        Lola.calcularCantidadComida();
         System.out.println("");
         System.out.println(Willy);
-
-        Lola.calcularCantidadComida();
     }
 }
