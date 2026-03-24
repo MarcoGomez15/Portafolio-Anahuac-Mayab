@@ -30,8 +30,8 @@ class JuegoPPT:
         e1 = self.jugador1.hacer_eleccion()
         e2 = self.jugador2.hacer_eleccion()
         
-        print(f"{YELLOW}🤖 El {self.jugador1.nombre} ha usado:{RESET} {BOLD}{e1}{RESET} {MAGENTA}(automáticamente){RESET}")
-        print(f"{YELLOW}🤖 El {self.jugador2.nombre} ha usado{RESET} {BOLD}{e2}{RESET} {MAGENTA}(este valor se selecciona automáticamente){RESET}\n")
+        print(f"{YELLOW}🤖 El {self.jugador1.nombre} ha usado:{RESET} {BOLD}{e1}{RESET} ")
+        print(f"{YELLOW}🤖 El {self.jugador2.nombre} ha usado{RESET} {BOLD}{e2}{RESET} ")
         
         ganador = self.determinar_ganador(e1, e2)
         
