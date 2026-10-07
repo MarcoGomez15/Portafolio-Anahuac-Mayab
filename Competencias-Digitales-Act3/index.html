@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fraude Digital en México</title>
+<meta name="author" content="Marco Antonio Gómez Fuentes">
+<meta name="description" content="Infografía interactiva sobre el fraude digital en México. Competencias Digitales, Área 3.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,500;112,700;125,800;125,900&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: póster vertical tipo "expediente de alerta": banda de título oscura, cifras clave, tarjetas desplegables y cierre con acción. Tema único claro (infografía impresa). */
+:root{
+  --ink:#0F1A30;      /* texto principal / bandas oscuras */
+  --paper:#F3F5F9;    /* fondo */
+  --card:#FFFFFF;
+  --muted:#46526B;    /* texto secundario */
+  --line:#D3DAE6;
+  --amber:#F59E0B;    /* señal de alerta (solo como relleno con texto oscuro) */
+  --rust:#B23A0B;     /* acento sobre claro */
+  --safe:#166534;     /* acciones seguras */
+  --amber-soft:#FEF3C7;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Source Sans 3","Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.5;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:20px 48px;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.05}
+h2{font-size:clamp(26px,3.6vw,36px);font-weight:800;font-stretch:125%;letter-spacing:-.01em}
+h3{font-size:19px;font-weight:700;font-stretch:112%}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);font-weight:600}
+.src{font-family:var(--mono);font-size:12px;color:var(--muted)}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+img.ic{width:40px;height:40px;flex:none}
+
+/* ---------- Encabezado ---------- */
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.top .course{font-family:var(--mono);font-size:12.5px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.author{margin-left:auto;text-align:right;border-right:4px solid var(--amber);padding-right:12px}
+.author strong{display:block;font-family:var(--display);font-stretch:112%;font-size:18px}
+.author span{font-size:14.5px;color:var(--muted)}
+.hero{background:var(--ink);color:#fff;border-radius:6px;overflow:hidden;display:grid;grid-template-columns:1.1fr 1fr}
+.hero-txt{padding:36px 32px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.hero h1{font-size:clamp(40px,6.4vw,74px);font-weight:900;font-stretch:125%;letter-spacing:-.02em}
+.hero h1 mark{background:var(--amber);color:var(--ink);padding:0 .12em}
+.hero p.lead{font-size:18.5px;color:#DCE3F0;max-width:46ch}
+.hero .eyebrow{color:var(--amber)}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:62% 40%;display:block;min-height:260px}
+.audio{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{border:0;border-radius:4px;padding:11px 18px;font-weight:700;display:inline-flex;align-items:center;gap:8px}
+.btn-amber{background:var(--amber);color:var(--ink)}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid #6E7FA3}
+.btn-ink{background:var(--ink);color:#fff}
+.audio-state{font-family:var(--mono);font-size:12.5px;color:#B9C4DA}
+.eq{display:inline-flex;gap:2px;align-items:flex-end;height:14px}
+.eq i{width:3px;background:var(--ink);height:4px}
+.speaking .eq i{animation:eq .8s infinite ease-in-out}
+.eq i:nth-child(2){animation-delay:.15s}.eq i:nth-child(3){animation-delay:.3s}
+@keyframes eq{50%{height:14px}}
+
+/* ---------- Datos generales ---------- */
+.sec{display:flex;flex-direction:column;gap:16px}
+.sec-head{display:flex;gap:14px;align-items:center}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:18px 16px;text-align:left;display:flex;flex-direction:column;gap:8px;color:var(--ink);transition:transform .2s,box-shadow .2s;min-width:0}
+.stat:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(15,26,48,.12)}
+.stat .num{font-family:var(--display);font-weight:900;font-stretch:125%;font-size:clamp(32px,4vw,44px);line-height:1;font-variant-numeric:tabular-nums}
+.stat .num small{font-size:.5em;font-weight:800}
+.stat .lbl{font-size:15px;color:var(--muted);line-height:1.35}
+.stat .more{font-family:var(--mono);font-size:12px;color:var(--rust);font-weight:600}
+.stat .detail{font-size:14.5px;border-top:1px dashed var(--line);padding-top:8px;line-height:1.4}
+.stat[aria-expanded="true"]{border-color:var(--ink);box-shadow:inset 0 -4px 0 var(--amber)}
+
+.chart{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:20px;display:grid;grid-template-columns:1fr 1.2fr;gap:24px;align-items:center}
+.chart p{color:var(--muted);font-size:15.5px}
+.bars{display:flex;flex-direction:column;gap:12px}
+.bar{display:grid;grid-template-columns:60px 1fr 64px;gap:10px;align-items:center;font-size:15px}
+.bar .track{height:18px;background:#E6EAF2;border-radius:2px;overflow:hidden}
+.bar .fill{height:100%;background:var(--ink);width:var(--w);transform-origin:left;animation:grow 1.4s cubic-bezier(.2,.8,.2,1) both}
+.bar:last-child .fill{background:var(--rust)}
+.bar b{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+@keyframes grow{from{transform:scaleX(0)}}
+
+/* ---------- Modalidades ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--ink);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 14px;font-weight:600;font-size:15px}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff}
+.chip-panel{background:var(--amber-soft);border:1px solid #F3D27A;border-radius:6px;padding:16px;display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:20px;align-items:center}
+.chip-panel figure{margin:0;min-width:0}
+.chip-panel figure img{width:100%;aspect-ratio:8/5;object-fit:cover;border-radius:4px;display:block}
+.chip-panel .txt{display:flex;flex-direction:column;gap:6px;min-width:0}
+.chip-panel .txt img.ic{width:34px;height:34px}
+figure.ill{margin:0;display:flex;flex-direction:column;gap:6px}
+figure.ill img{width:100%;aspect-ratio:8/5;object-fit:cover;border-radius:6px;display:block;border:1px solid var(--line)}
+figcaption{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.sol-wrap{display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:20px;align-items:start}
+.sol-wrap>div{display:flex;flex-direction:column;gap:14px;min-width:0}
+.chip-panel h3{margin-bottom:4px}
+.chip-panel .flag{font-family:var(--mono);font-size:13px;color:var(--rust);font-weight:600;margin-top:6px}
+.fade{animation:fade .35s ease both}
+@keyframes fade{from{opacity:.25;transform:translateY(4px)}}
+
+/* ---------- Consecuencias / impacto ---------- */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.list{display:flex;flex-direction:column;gap:10px}
+.acc{background:var(--card);border:1px solid var(--line);border-radius:6px}
+.acc>button{width:100%;background:none;border:0;color:var(--ink);display:flex;align-items:center;gap:12px;padding:14px 16px;text-align:left}
+.acc>button span.t{flex:1;font-weight:700;font-size:16.5px}
+.acc>button .pm{font-family:var(--mono);font-size:20px;color:var(--rust);width:20px;text-align:center}
+.acc .body{padding:0 16px 14px 68px;font-size:15.5px;color:var(--ink)}
+.acc img.ic{width:36px;height:36px}
+.impact{background:var(--ink);color:#fff;border-radius:6px;padding:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:28px;align-items:center}
+.imp-num{display:flex;flex-direction:column;gap:10px;min-width:0}
+.impact li b{color:var(--amber)}
+.cons-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+.impact .big{font-family:var(--display);font-weight:900;font-stretch:125%;font-size:clamp(38px,5vw,56px);color:var(--amber);line-height:1}
+.impact p{color:#DCE3F0;font-size:15.5px}
+.impact ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:8px;color:#fff;font-size:15.5px}
+.impact .src{color:#AAB6CC}
+
+/* ---------- Quiz ---------- */
+.quiz{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}
+.msg{background:#E8ECF4;border-radius:16px 16px 16px 4px;padding:14px 16px;font-size:15.5px;max-width:420px}
+.msg .from{font-family:var(--mono);font-size:12px;color:var(--muted);display:block;margin-bottom:4px}
+.q-actions{display:flex;gap:10px;flex-wrap:wrap}
+.q-actions .btn{border:1.5px solid var(--ink)}
+.btn-out{background:var(--card);color:var(--ink)}
+.verdict{font-size:15.5px;border-left:4px solid var(--line);padding-left:12px}
+.verdict.ok{border-color:var(--safe)}.verdict.bad{border-color:var(--rust)}
+.verdict strong.ok{color:var(--safe)}.verdict strong.bad{color:var(--rust)}
+.q-meta{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+
+/* ---------- Soluciones ---------- */
+.tabs{display:flex;gap:0;border-bottom:2px solid var(--ink);flex-wrap:wrap}
+.tab{background:none;border:0;padding:10px 16px;font-weight:700;color:var(--muted);border-bottom:4px solid transparent;margin-bottom:-2px}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--amber)}
+.sol{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.sol li{list-style:none;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;font-size:15.5px}
+.sol li b{font-family:var(--display);font-stretch:112%;font-size:16.5px}
+.sol{padding:0;margin:0}
+
+/* ---------- CTA ---------- */
+.cta{background:var(--amber);color:var(--ink);border-radius:6px;padding:26px;display:grid;grid-template-columns:1.4fr 1fr;gap:26px}
+.cta h2{font-size:clamp(30px,4.4vw,46px)}
+.cta .eyebrow{color:var(--ink)}
+.checks{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.checks label{display:flex;gap:10px;align-items:flex-start;font-size:16px;font-weight:600;cursor:pointer}
+.checks input{width:20px;height:20px;accent-color:var(--ink);margin-top:2px;flex:none}
+.progress{height:10px;background:rgba(15,26,48,.18);border-radius:999px;overflow:hidden;margin-top:6px}
+.progress i{display:block;height:100%;background:var(--ink);width:0;transition:width .4s ease}
+.prog-txt{font-family:var(--mono);font-size:13px;font-weight:600}
+.contact{background:var(--card);border-radius:6px;padding:18px;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.contact .row{display:flex;gap:14px;align-items:center}
+.contact img.qr{width:120px;height:120px;image-rendering:pixelated;border:1px solid var(--line)}
+.contact .tel{font-family:var(--display);font-weight:900;font-stretch:125%;font-size:40px;line-height:1}
+.contact p{font-size:14.5px}
+.contact a{color:var(--ink);font-weight:700}
+
+/* ---------- Referencias ---------- */
+.refs{border-top:2px solid var(--ink);padding-top:14px;display:flex;flex-direction:column;gap:8px}
+.refs ol{margin:0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.refs li{font-size:14.5px;padding-left:2em;text-indent:-2em;color:var(--ink)}
+.refs a{color:var(--muted);word-break:break-all}
+.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+@media (max-width:860px){
+  .hero,.chart,.two,.quiz,.cta,.chip-panel,.sol-wrap,.impact,.cons-grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .sol{grid-template-columns:1fr}
+  .bar{grid-template-columns:110px 1fr 50px}
+  .hero img{max-height:280px}
+}
+@media (max-width:480px){.stats{grid-template-columns:1fr}.acc .body{padding-left:16px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+
+  <header class="top">
+    <div class="course">Infografía interactiva · Competencias Digitales · Área 3</div>
+    <div class="author">
+      <strong>Marco Antonio Gómez Fuentes</strong>
+      <span>Ingeniería en Tecnologías de la Información y Negocios Digitales</span>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="t">
+    <div class="hero-txt">
+      <span class="eyebrow">Problema social · Seguridad digital</span>
+      <h1 id="t">Un clic, <mark>un fraude</mark></h1>
+      <p class="lead">El fraude es el delito más frecuente en México y cada vez ocurre más por internet. Más pagos digitales también significan más oportunidades para los estafadores.</p>
+      <div class="audio">
+        <button class="btn btn-amber" id="btnAudio" type="button"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span> <span id="audioLbl">Escuchar resumen</span></button>
+        <button class="btn btn-ghost" id="btnStop" type="button">Detener</button>
+      </div>
+      <span class="audio-state" id="audioState">Audio narrado por Marco · 36 s</span>
+      <audio id="voz" preload="none" src="audio/resumen.mp3"></audio>
+    </div>
+    <img src="img/hero.jpg" alt="Teléfono que muestra un SMS falso de un banco pidiendo validar la cuenta en un enlace acortado">
+  </section>
+
+  <!-- DATOS GENERALES -->
+  <section class="sec" aria-labelledby="dg">
+    <div class="sec-head"><img class="ic" src="iconos/caida.png" alt=""><div><span class="eyebrow">Datos generales</span><h2 id="dg">La magnitud del problema</h2></div></div>
+    <p class="src">Toca cada cifra para ver el dato que la explica.</p>
+    <div class="stats">
+      <button class="stat" type="button" aria-expanded="false">
+        <span class="num"><span data-count="104.9" data-dec="1">0</span><small> M</small></span>
+        <span class="lbl">personas usan internet en México en 2025 (86.1 % de la población de 6 años o más)</span>
+        <span class="more">+ Ver detalle</span>
+        <span class="detail" hidden>97.3 % se conecta desde un smartphone y 37.3 % compra por internet. <span class="src">Instituto Nacional de Estadística y Geografía [INEGI], 2026b</span></span>
+      </button>
+      <button class="stat" type="button" aria-expanded="false">
+        <span class="num"><span data-count="8290">0</span></span>
+        <span class="lbl">fraudes por cada 100 mil habitantes en 2025: el delito más frecuente del país</span>
+        <span class="more">+ Ver detalle</span>
+        <span class="detail" hidden>Fue el 24.1 % de todos los delitos. Incluye fraude bancario y al consumidor, y cada víctima perdió en promedio $7,551. <span class="src">INEGI, 2026a</span></span>
+      </button>
+      <button class="stat" type="button" aria-expanded="false">
+        <span class="num"><span data-count="71">0</span><small> %</small></span>
+        <span class="lbl">de las reclamaciones por fraude financiero en 2023 fueron estafas por internet</span>
+        <span class="more">+ Ver detalle</span>
+        <span class="detail" hidden>En 2023 se registraron 8.1 millones de reclamaciones por fraudes financieros ante la CONDUSEF. <span class="src">Impunidad Cero, s.f.</span></span>
+      </button>
+      <button class="stat" type="button" aria-expanded="false">
+        <span class="num"><span data-count="93.4" data-dec="1">0</span><small> %</small></span>
+        <span class="lbl">de los delitos de 2025 no se denunció o no se investigó (cifra negra)</span>
+        <span class="more">+ Ver detalle</span>
+        <span class="detail" hidden>Fueron 33.8 millones de delitos en 2025. En el caso del fraude, se estima que cerca del 97 % nunca se reporta. <span class="src">Impunidad Cero, s.f.; INEGI, 2026a</span></span>
+      </button>
+    </div>
+    <div class="chart">
+      <div>
+        <h3>Cada vez más conectados</h3>
+        <p>Porcentaje de la población de 6 años o más que usa internet. Más personas en línea también significa más posibles víctimas de un fraude digital.</p>
+        <p class="src">Fuente: INEGI, 2026b (ENDUTIH 2025)</p>
+      </div>
+      <div class="bars" role="img" aria-label="Usuarios de internet: 57.4 por ciento en 2015, 78.6 por ciento en 2022, 83.1 por ciento en 2024 y 86.1 por ciento en 2025">
+        <div class="bar"><span>2015</span><div class="track"><div class="fill" style="--w:57.4%"></div></div><b>57.4 %</b></div>
+        <div class="bar"><span>2022</span><div class="track"><div class="fill" style="--w:78.6%"></div></div><b>78.6 %</b></div>
+        <div class="bar"><span>2024</span><div class="track"><div class="fill" style="--w:83.1%"></div></div><b>83.1 %</b></div>
+        <div class="bar"><span>2025</span><div class="track"><div class="fill" style="--w:86.1%"></div></div><b>86.1 %</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODALIDADES -->
+  <section class="sec" aria-labelledby="mod">
+    <div class="sec-head"><img class="ic" src="iconos/anzuelo.png" alt=""><div><span class="eyebrow">¿Cómo ocurre?</span><h2 id="mod">Las trampas más comunes</h2></div></div>
+    <div class="chips" role="group" aria-label="Modalidades de fraude">
+      <button class="chip" type="button" data-k="phishing" aria-pressed="true">Phishing</button>
+      <button class="chip" type="button" data-k="smishing" aria-pressed="false">SMS y WhatsApp</button>
+      <button class="chip" type="button" data-k="vishing" aria-pressed="false">Llamada del "banco"</button>
+      <button class="chip" type="button" data-k="tienda" aria-pressed="false">Tiendas falsas</button>
+      <button class="chip" type="button" data-k="identidad" aria-pressed="false">Robo de identidad</button>
+    </div>
+    <div class="chip-panel" id="chipPanel" aria-live="polite"></div>
+  </section>
+
+  <!-- CONSECUENCIAS -->
+  <section class="sec" aria-labelledby="cons">
+    <div class="sec-head"><img class="ic" src="iconos/alerta.png" alt=""><div><span class="eyebrow">Consecuencias</span><h2 id="cons">Lo que pierde la víctima</h2></div></div>
+    <div class="cons-grid">
+      <figure class="ill"><img src="img/estado.jpg" alt="Estado de cuenta con tres cargos no reconocidos que dejan la cuenta casi en cero"><figcaption>Así se ve un fraude en el estado de cuenta · ejemplo ficticio</figcaption></figure>
+      <div class="list">
+        <div class="acc"><button type="button" aria-expanded="true"><img class="ic" src="iconos/tarjeta.png" alt=""><span class="t">Pérdida de dinero</span><span class="pm">−</span></button>
+          <div class="body">Cargos no reconocidos y transferencias que muchas veces no se recuperan, sobre todo cuando la víctima entregó sus claves.</div></div>
+        <div class="acc"><button type="button" aria-expanded="false"><img class="ic" src="iconos/personas.png" alt=""><span class="t">Robo de identidad</span><span class="pm">+</span></button>
+          <div class="body" hidden>Con datos personales robados se pueden abrir cuentas o pedir créditos a nombre de la víctima, que termina con deudas que no hizo.</div></div>
+        <div class="acc"><button type="button" aria-expanded="false"><img class="ic" src="iconos/alerta.png" alt=""><span class="t">Tiempo y estrés</span><span class="pm">+</span></button>
+          <div class="body" hidden>Recuperar el dinero o aclarar un cargo implica llamadas, trámites y reclamaciones que pueden tardar semanas.</div></div>
+        <div class="acc"><button type="button" aria-expanded="false"><img class="ic" src="iconos/candado.png" alt=""><span class="t">Desconfianza en lo digital</span><span class="pm">+</span></button>
+          <div class="body" hidden>Después de un fraude, muchas personas dejan de comprar o pagar en línea y regresan al efectivo.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACTO SOCIAL -->
+  <section class="sec" aria-labelledby="imp">
+    <div class="sec-head"><img class="ic" src="iconos/personas.png" alt=""><div><span class="eyebrow">Impacto social</span><h2 id="imp">Lo que pierde el país</h2></div></div>
+    <div class="impact">
+      <div class="imp-num">
+        <span class="big">$267.3 mil millones</span>
+        <p>costó la delincuencia a los hogares en 2025, el 1.06 % del PIB, entre pérdidas y gastos en protección. Ese año, 23 millones de personas fueron víctimas de algún delito, y el fraude fue el más frecuente.</p>
+        <span class="src">INEGI, 2026a</span>
+      </div>
+      <ul>
+        <li><b>Economía digital.</b> Cada fraude genera desconfianza en los pagos digitales, y eso afecta al comercio electrónico y a los pequeños negocios que venden en línea.</li>
+        <li><b>Brecha digital.</b> Quienes tienen menos práctica con la tecnología, como muchas personas adultas mayores, necesitan más apoyo para reconocer los engaños.</li>
+        <li><b>Impunidad.</b> Si 93.4 % de los delitos no se denuncia o no se investiga (INEGI, 2026a), los delincuentes rara vez enfrentan consecuencias.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="sec" aria-labelledby="qz">
+    <div class="sec-head"><img class="ic" src="iconos/sms.png" alt=""><div><span class="eyebrow">Ponte a prueba</span><h2 id="qz">¿Fraude o legítimo?</h2></div></div>
+    <div class="quiz">
+      <div class="msg" id="qMsg"><span class="from" id="qFrom"></span><span id="qText"></span></div>
+      <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
+        <span class="q-meta" id="qMeta"></span>
+        <div class="q-actions">
+          <button class="btn btn-ink" type="button" data-a="fraude">Es fraude</button>
+          <button class="btn btn-out" type="button" data-a="legit">Parece legítimo</button>
+        </div>
+        <div class="verdict" id="qVerdict" aria-live="polite">Elige una opción para ver la explicación.</div>
+        <button class="btn btn-out" type="button" id="qNext" hidden>Siguiente mensaje →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUCIONES -->
+  <section class="sec" aria-labelledby="sol">
+    <div class="sec-head"><img class="ic" src="iconos/escudo.png" alt=""><div><span class="eyebrow">Soluciones</span><h2 id="sol">Cómo cerrar la puerta</h2></div></div>
+    <div class="sol-wrap">
+    <figure class="ill"><img src="img/2fa.jpg" alt="Pantalla de verificación en dos pasos pidiendo un código de seis dígitos"><figcaption>La verificación en dos pasos agrega un segundo candado</figcaption></figure>
+    <div>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-t="tu" type="button">Tú</button>
+      <button class="tab" role="tab" aria-selected="false" data-t="emp" type="button">Empresas y desarrolladores</button>
+      <button class="tab" role="tab" aria-selected="false" data-t="gob" type="button">Instituciones</button>
+    </div>
+    <ul class="sol" id="solList" role="tabpanel"></ul>
+    </div>
+    </div>
+  </section>
+
+  <!-- LLAMADO A LA ACCIÓN -->
+  <section class="cta" aria-labelledby="cta">
+    <div style="display:flex;flex-direction:column;gap:10px;min-width:0">
+      <span class="eyebrow">Llamado a la acción</span>
+      <h2 id="cta">Detente, verifica y denuncia</h2>
+      <p>Marca lo que ya haces y comparte esta infografía con tu familia, sobre todo con quien apenas empieza a usar la banca en línea.</p>
+      <div class="checks" id="checks">
+        <label><input type="checkbox" id="c1"> Activé la verificación en dos pasos en mi banco y correo.</label>
+        <label><input type="checkbox" id="c2"> Nunca comparto mi NIP, contraseña ni códigos por SMS.</label>
+        <label><input type="checkbox" id="c3"> Si me llaman "del banco", cuelgo y marco al número de mi tarjeta.</label>
+        <label><input type="checkbox" id="c4"> Activé alertas de cada movimiento de mi cuenta.</label>
+        <label><input type="checkbox" id="c5"> Si soy víctima, lo reporto a mi banco, a la CONDUSEF y al 088.</label>
+      </div>
+      <div class="progress" aria-hidden="true"><i id="progBar"></i></div>
+      <span class="prog-txt" id="progTxt">0 de 5 hábitos seguros</span>
+    </div>
+    <div class="contact">
+      <div class="row"><img src="iconos/megafono.png" class="ic" alt=""><h3>¿Fuiste víctima?</h3></div>
+      <div class="row">
+        <img class="qr" src="iconos/qr_condusef.png" alt="Código QR al sitio de la CONDUSEF">
+        <p>Escanea para ir a la <a href="https://www.condusef.gob.mx/" target="_blank" rel="noopener">CONDUSEF</a> y presentar tu reclamación.</p>
+      </div>
+      <div><span class="tel">088</span><p>Línea de denuncia de la Guardia Nacional. Llama a tu banco primero para bloquear tu tarjeta.</p></div>
+    </div>
+  </section>
+
+  <!-- REFERENCIAS -->
+  <section class="refs" aria-labelledby="ref">
+    <h3 id="ref">Referencias (APA 7)</h3>
+    <ol>
+      <li>Impunidad Cero. (s.f.). <i>Guía para denunciar fraudes cibernéticos</i>. <a href="https://www.impunidadcero.org/uploads/app/articulo/224/contenido/1770245869J30.pdf" target="_blank" rel="noopener">https://www.impunidadcero.org/uploads/app/articulo/224/contenido/1770245869J30.pdf</a></li>
+      <li>Instituto Nacional de Estadística y Geografía. (2026a, 10 de septiembre). <i>Encuesta Nacional de Victimización y Percepción sobre Seguridad Pública (ENVIPE) 2026</i> [Comunicado de prensa núm. 50/26]. <a href="https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/envipe/ENVIPE2026_CP.pdf" target="_blank" rel="noopener">https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/envipe/ENVIPE2026_CP.pdf</a></li>
+      <li>Instituto Nacional de Estadística y Geografía. (2026b, 16 de junio). <i>Encuesta Nacional sobre Disponibilidad y Uso de Tecnologías de la Información en los Hogares (ENDUTIH) 2025</i> [Comunicado de prensa núm. 19/26]. <a href="https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/endutih/ENDUTIH_25_RR.pdf" target="_blank" rel="noopener">https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/endutih/ENDUTIH_25_RR.pdf</a></li>
+    </ol>
+    <div class="foot"><span>Marco Antonio Gómez Fuentes · Ingeniería en Tecnologías de la Información y Negocios Digitales</span><span>Enlace: https://marcogomez15.github.io/Portafolio-Anahuac-Mayab/Competencias-Digitales-Act3/</span></div>
+  </section>
+</div>
+
+<script>
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // 1. Contadores animados
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    const end=parseFloat(el.dataset.count), dec=+(el.dataset.dec||0);
+    const fmt=v=>v.toLocaleString('es-MX',{minimumFractionDigits:dec,maximumFractionDigits:dec});
+    el.textContent=fmt(end);
+    if(reduce) return;
+    const t0=performance.now(), d=1400;
+    (function step(t){const p=Math.min(1,(t-t0)/d), e=1-Math.pow(1-p,3); el.textContent=fmt(end*e); if(p<1) requestAnimationFrame(step); else el.textContent=fmt(end);})(t0);
+  });
+
+  // 2. Tarjetas de datos con información secundaria
+  document.querySelectorAll('.stat').forEach(b=>b.addEventListener('click',()=>{
+    const open=b.getAttribute('aria-expanded')==='true';
+    b.setAttribute('aria-expanded',String(!open));
+    const d=b.querySelector('.detail'); d.hidden=open; if(!open) d.classList.add('fade');
+    b.querySelector('.more').textContent=open?'+ Ver detalle':'− Ocultar';
+  }));
+
+  // 3. Modalidades
+  const M={
+    phishing:{img:'img/phishing.jpg',h:'Phishing',p:'Correos que imitan a tu banco, a una paquetería o a una plataforma de streaming y te llevan a una página falsa para robar tu usuario y contraseña.',f:'Señal: dominio raro, prisa y "verifica tu cuenta".',i:'iconos/anzuelo.png'},
+    smishing:{img:'img/whatsapp.jpg',h:'SMS y WhatsApp',p:'Mensajes cortos con un enlace acortado que dicen que hay un cargo, un paquete retenido o un premio. El enlace instala malware o pide tus datos.',f:'Señal: enlace bit.ly o con errores de escritura.',i:'iconos/sms.png'},
+    vishing:{img:'img/llamada.jpg',h:'Llamada del "banco"',p:'Alguien se presenta como ejecutivo del área de fraudes y te pide el código que llegó por SMS "para cancelar un cargo". Con ese código autoriza la operación.',f:'Señal: te piden NIP, contraseña o código. Tu banco nunca lo hace.',i:'iconos/alerta.png'},
+    tienda:{img:'img/tienda.jpg',h:'Tiendas falsas',p:'Perfiles en redes sociales o páginas con precios muy bajos que piden pago por transferencia y nunca entregan el producto.',f:'Señal: solo aceptan transferencia y no tienen datos fiscales.',i:'iconos/tarjeta.png'},
+    identidad:{img:'img/identidad.jpg',h:'Robo de identidad',p:'Con tu INE, CURP o comprobante filtrados, los delincuentes abren cuentas, piden préstamos o duplican tu chip para recibir tus códigos.',f:'Señal: tu celular se queda sin señal de repente o llegan cobros que no reconoces.',i:'iconos/personas.png'}
+  };
+  const panel=document.getElementById('chipPanel');
+  function showChip(k){const m=M[k]; panel.innerHTML=`<figure><img src="${m.img}" alt="Ejemplo ilustrativo de ${m.h}"></figure><div class="txt"><img class="ic" src="${m.i}" alt=""><h3>${m.h}</h3><p>${m.p}</p><p class="flag">${m.f}</p><span class="src">Imagen ilustrativa · ejemplo ficticio</span></div>`; panel.classList.remove('fade'); void panel.offsetWidth; panel.classList.add('fade');
+    document.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',String(c.dataset.k===k)));}
+  document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>showChip(c.dataset.k)));
+  showChip('phishing');
+
+  // 4. Acordeón de consecuencias
+  document.querySelectorAll('.acc>button').forEach(b=>b.addEventListener('click',()=>{
+    const open=b.getAttribute('aria-expanded')==='true', body=b.nextElementSibling;
+    b.setAttribute('aria-expanded',String(!open)); body.hidden=open; b.querySelector('.pm').textContent=open?'+':'−';
+    if(!open) body.classList.add('fade');
+  }));
+
+  // 5. Quiz
+  const Q=[
+    {from:'SMS · 55 1234 9087',t:'BANCO-MX: Tu tarjeta fue bloqueada por seguridad. Desbloquéala en bit.ly/desbloq-mx antes de 1 hora.',a:'fraude',e:'Usa urgencia, un número personal y un enlace acortado. Los bancos no piden desbloquear tarjetas por SMS.'},
+    {from:'App de tu banco · notificación',t:'Compra por $349.00 en SUPERMERCADO con tu tarjeta terminación 4821. ¿No fuiste tú? Abre la app.',a:'legit',e:'Es una alerta de movimiento dentro de la app oficial, sin enlaces ni petición de datos. Aun así, revisa siempre desde la app.'},
+    {from:'Llamada · "Área de fraudes"',t:'Detectamos un cargo de $8,500. Para cancelarlo, díctame el código de 6 dígitos que te acaba de llegar.',a:'fraude',e:'Ningún banco pide el código que recibes por SMS. Con él, el estafador autoriza el cargo. Cuelga y llama al número de tu tarjeta.'},
+    {from:'Correo · paqueteria-envios.co',t:'Tu paquete está retenido. Paga $29 de reenvío con tu tarjeta en el siguiente enlace.',a:'fraude',e:'El dominio no es oficial y piden un pago pequeño para robar los datos de tu tarjeta.'}
+  ];
+  let qi=0, score=0;
+  const qFrom=document.getElementById('qFrom'),qText=document.getElementById('qText'),qMeta=document.getElementById('qMeta'),qV=document.getElementById('qVerdict'),qNext=document.getElementById('qNext'),qBtns=document.querySelectorAll('[data-a]');
+  function loadQ(){const q=Q[qi]; qFrom.textContent=q.from; qText.textContent=q.t; qMeta.textContent=`Mensaje ${qi+1} de ${Q.length} · Aciertos: ${score}`; qV.className='verdict'; qV.textContent='Elige una opción para ver la explicación.'; qNext.hidden=true; qBtns.forEach(b=>b.disabled=false);
+    const m=document.getElementById('qMsg'); m.classList.remove('fade'); void m.offsetWidth; m.classList.add('fade');}
+  qBtns.forEach(b=>b.addEventListener('click',()=>{const q=Q[qi], ok=b.dataset.a===q.a; if(ok) score++;
+    qV.className='verdict '+(ok?'ok':'bad'); qV.innerHTML=`<strong class="${ok?'ok':'bad'}">${ok?'Correcto.':'Cuidado.'}</strong> ${q.a==='fraude'?'Es fraude.':'Es legítimo.'} ${q.e}`;
+    qBtns.forEach(x=>x.disabled=true); qMeta.textContent=`Mensaje ${qi+1} de ${Q.length} · Aciertos: ${score}`;
+    qNext.hidden=false; qNext.textContent= qi<Q.length-1?'Siguiente mensaje →':'Reiniciar prueba ↺';}));
+  qNext.addEventListener('click',()=>{ if(qi<Q.length-1) qi++; else {qi=0;score=0;} loadQ(); });
+  loadQ();
+
+  // 6. Pestañas de soluciones
+  const S={
+    tu:[['Verificación en dos pasos','Actívala en banco, correo y redes. Una contraseña robada ya no basta.'],['Canal oficial siempre','Entra a tu banco solo desde la app o escribiendo la dirección, nunca desde un enlace recibido.'],['Alertas y tarjeta digital','Activa notificaciones de cada cargo y usa tarjeta digital para comprar en línea.']],
+    emp:[['Seguridad desde el diseño','Autenticación fuerte, límites por operación y detección de comportamiento inusual en apps y tiendas en línea.'],['Comunicación clara','Decir a los clientes, una y otra vez, qué datos nunca se les pedirán y por qué canal se les contactará.'],['Proteger los datos','Cifrar y guardar solo los datos necesarios reduce lo que una filtración puede exponer.']],
+    gob:[['Educación digital','Campañas en escuelas y comunidades, con prioridad para adultos mayores y nuevos usuarios de banca.'],['Denuncia más fácil','Trámites en línea, rápidos y con seguimiento, para bajar la cifra negra.'],['Coordinación','Bancos, CONDUSEF y policías cibernéticas compartiendo alertas de números y sitios fraudulentos.']]
+  };
+  const solList=document.getElementById('solList');
+  function showTab(k){solList.innerHTML=S[k].map(([b,t])=>`<li class="fade"><b>${b}</b><span>${t}</span></li>`).join('');
+    document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected',String(t.dataset.t===k)));}
+  document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>showTab(t.dataset.t)));
+  showTab('tu');
+
+  // 7. Checklist con progreso
+  const cbs=[...document.querySelectorAll('#checks input')], bar=document.getElementById('progBar'), txt=document.getElementById('progTxt');
+  function upd(){const n=cbs.filter(c=>c.checked).length; bar.style.width=(n/cbs.length*100)+'%'; txt.textContent= n===cbs.length?'5 de 5: ¡estás protegido! Ahora compártelo.':`${n} de ${cbs.length} hábitos seguros`;}
+  cbs.forEach(c=>c.addEventListener('change',upd)); upd();
+
+  // 8. Audio narrado: grabación propia (audio/resumen.*); si no carga, usa la voz del navegador
+  const btnA=document.getElementById('btnAudio'), btnS=document.getElementById('btnStop'), st=document.getElementById('audioState'), lbl=document.getElementById('audioLbl'), voz=document.getElementById('voz');
+  const texto='Hola, soy Marco Gómez, estudiante de Ingeniería en Tecnologías de la Información y Negocios Digitales. En México casi ciento cinco millones de personas usamos internet, y el fraude es el delito más frecuente del país: en 2025 hubo ocho mil doscientos noventa fraudes por cada cien mil habitantes, y en promedio cada víctima perdió más de siete mil quinientos pesos. Además, más del noventa y tres por ciento de los delitos no se denuncia. Para protegerte, activa la verificación en dos pasos, nunca compartas tu NIP ni tus códigos y entra a tu banco solo por su app oficial. Si te pasa, llama a tu banco, repórtalo a la CONDUSEF y al cero ochenta y ocho. Detente, verifica y denuncia.';
+  const synth=window.speechSynthesis;
+  function playing(){btnA.classList.add('speaking'); lbl.textContent='Reproduciendo…'; st.textContent='Narrando el resumen de la infografía';}
+  function stop(){ try{voz.pause(); voz.currentTime=0;}catch(e){} if(synth) synth.cancel(); btnA.classList.remove('speaking'); lbl.textContent='Escuchar resumen'; }
+  function speak(){
+    if(!synth||typeof SpeechSynthesisUtterance==='undefined'){ st.textContent='Tu navegador no tiene narración de voz. Prueba en Chrome, Edge o Safari.'; return; }
+    synth.cancel();
+    const u=new SpeechSynthesisUtterance(texto); u.lang='es-MX'; u.rate=1;
+    const v=synth.getVoices().find(v=>/^es(-|_)MX/i.test(v.lang))||synth.getVoices().find(v=>/^es/i.test(v.lang)); if(v) u.voice=v;
+    u.onstart=playing; u.onend=()=>{stop(); st.textContent='Resumen terminado · puedes repetirlo';};
+    u.onerror=()=>{stop(); st.textContent='No se pudo reproducir el audio en este navegador.';};
+    synth.speak(u);
+  }
+  voz.addEventListener('playing',playing);
+  voz.addEventListener('ended',()=>{stop(); st.textContent='Resumen terminado · puedes repetirlo';});
+  btnA.addEventListener('click',()=>{
+    stop();
+    const p=voz.play();
+    if(p&&p.catch) p.catch(()=>speak()); else speak();
+  });
+  btnS.addEventListener('click',()=>{stop(); st.textContent='Audio detenido';});
+})();
+</script>
+
+</body>
+</html>
