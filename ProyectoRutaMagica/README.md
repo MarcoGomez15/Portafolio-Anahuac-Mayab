@@ -89,6 +89,7 @@ ProyectoRutaMagica/
 ├── pueblos.txt                     # Datos del grafo
 ├── test_ruta_magica.py             # Pruebas automáticas
 ├── CAMBIOS.md                      # Errores de la v1 y cómo se corrigieron
+├── Prompts_Ruta_Magica.pdf         # Prompts usados con la IA y sus respuestas
 └── versiones/
     └── ruta_magica_v1_original.py  # Versión original con los errores comentados
 ```
