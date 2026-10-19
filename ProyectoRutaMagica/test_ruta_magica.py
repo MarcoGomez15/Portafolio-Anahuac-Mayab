@@ -1,16 +1,36 @@
 """
 Pruebas de Ruta Magica.
 
-Cada prueba verifica uno de los errores corregidos de la version 1.
+Equipo: Marco Antonio Gomez Fuentes (581874), Amir Moises Hernandez Farah
+(584687), Emiliano Peniche Correa (581158), Rodrigo Quijano Lopez (582035).
+
+Cada prueba verifica uno de los errores corregidos de la version 1 o un
+requisito del enunciado.
 Ejecutar con:   python test_ruta_magica.py
 (tambien funcionan con pytest:  pytest test_ruta_magica.py)
 """
 
 import builtins
+import contextlib
+import io
 
 import ruta_magica as rm
 
 GRAFO = rm.cargar_grafo(rm.leer_datos())
+
+INF = None  # sin conexion directa
+
+# Matriz de adyacencia de referencia del enunciado (km).
+# Orden: ZAC, CHI, TET, CUE, TLA, XIC, PAH
+MATRIZ_REFERENCIA = [
+    [0,   22,  48,  INF, INF, 55,  60],
+    [22,  0,   42,  INF, 90,  INF, INF],
+    [48,  42,  0,   68,  INF, INF, INF],
+    [INF, INF, 68,  0,   38,  115, INF],
+    [INF, 90,  INF, 38,  0,   INF, INF],
+    [55,  INF, INF, 115, INF, 0,   32],
+    [60,  INF, INF, INF, INF, 32,  0],
+]
 
 
 def test_grafo_conserva_todas_las_aristas():
@@ -30,6 +50,19 @@ def test_grafo_no_dirigido():
     assert GRAFO["Tlatlauquitepec"]  # antes no tenia salidas
 
 
+def test_grafo_coincide_con_matriz_de_referencia():
+    """Enunciado: el grafo cargado debe ser igual a la matriz de referencia."""
+    for i, a in enumerate(rm.ORDEN):
+        for j, b in enumerate(rm.ORDEN):
+            esperado = MATRIZ_REFERENCIA[i][j]
+            if i == j:
+                assert esperado == 0
+            elif esperado is INF:
+                assert b not in GRAFO[a], f"{a}-{b} no deberia estar conectado"
+            else:
+                assert GRAFO[a].get(b) == esperado, f"{a}-{b} deberia ser {esperado} km"
+
+
 def test_dijkstra_minimiza_km_no_tramos():
     """ERROR #3: un BFS elegiria el tramo directo de 100 km (1 tramo);
     Dijkstra debe elegir la ruta de 30 km aunque tenga 3 tramos."""
@@ -43,15 +76,10 @@ def test_dijkstra_minimiza_km_no_tramos():
     assert total == 30
     assert camino == ["Zacatlan", "Chignahuapan", "Tetela_de_Ocampo", "Cuetzalan"]
 
-    # Rutas reales del proyecto (calculadas a mano)
-
+    # En el grafo real, el BFS de la v1 daba 170 km (por Xicotepec).
     camino, total = rm.ruta_mas_corta(GRAFO, "Zacatlan", "Cuetzalan")
     assert total == 116
     assert camino == ["Zacatlan", "Tetela_de_Ocampo", "Cuetzalan"]
-
-    camino, total = rm.ruta_mas_corta(GRAFO, "Pahuatlan", "Tlatlauquitepec")
-    assert total == 172
-    assert camino == ["Pahuatlan", "Zacatlan", "Chignahuapan", "Tlatlauquitepec"]
 
 
 def test_caminos_no_se_mezclan():
@@ -75,6 +103,28 @@ def test_menu_acepta_primera_y_ultima_opcion():
         assert rm.pedir_pueblo("DESTINO") == rm.ORDEN[-1]
     finally:
         builtins.input = original
+
+
+def test_ejemplos_del_enunciado():
+    """Enunciado: Xicotepec -> Tlatlauquitepec = 153 km y
+    Pahuatlan -> Tlatlauquitepec = 172 km.
+    ERROR #6: cada tramo debe imprimir su propio peso."""
+    camino, total = rm.ruta_mas_corta(GRAFO, "Xicotepec", "Tlatlauquitepec")
+    assert total == 153
+    assert camino == ["Xicotepec", "Cuetzalan", "Tlatlauquitepec"]
+
+    salida = io.StringIO()
+    with contextlib.redirect_stdout(salida):
+        rm.imprimir_resultado(GRAFO, camino, total)
+    texto = salida.getvalue()
+    assert "Xicotepec --(115 km)--> Cuetzalan" in texto
+    assert "Cuetzalan --( 38 km)--> Tlatlauquitepec" in texto
+    assert "Xicotepec -> Cuetzalan -> Tlatlauquitepec" in texto
+    assert "Distancia total: 153 km" in texto
+
+    camino, total = rm.ruta_mas_corta(GRAFO, "Pahuatlan", "Tlatlauquitepec")
+    assert total == 172
+    assert camino == ["Pahuatlan", "Zacatlan", "Chignahuapan", "Tlatlauquitepec"]
 
 
 def test_sin_ruta_devuelve_none():

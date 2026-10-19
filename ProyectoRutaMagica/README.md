@@ -2,13 +2,20 @@
 
 Programa de consola en Python que calcula la **ruta más corta entre Pueblos Mágicos de Puebla** usando el **algoritmo de Dijkstra** sobre un grafo ponderado.
 
-**Autor:** Marco Antonio Gómez Fuentes · **Matrícula:** 581874
+## Equipo
+
+| Integrante | Matrícula |
+|------------|-----------|
+| Marco Antonio Gómez Fuentes | 581874 |
+| Amir Moisés Hernández Farah | 584687 |
+| Emiliano Peniche Correa | 581158 |
+| Rodrigo Quijano López | 582035 |
 
 ## Modelo del problema
 
 | Elemento del grafo | Representa |
 |--------------------|------------|
-| Vértices (7) | Pueblos Mágicos |
+| Vértices (7) | Pueblos Mágicos de la Sierra Norte de Puebla |
 | Aristas (10) | Carreteras entre pueblos (doble sentido → grafo **no dirigido**) |
 | Pesos | Distancia en kilómetros |
 
@@ -22,7 +29,15 @@ Programa de consola en Python que calcula la **ruta más corta entre Pueblos Má
         +---------- Cuetzalan ---38--- Tlatlauquitepec
 ```
 
-Las conexiones están en `pueblos.txt`, una por línea: `PuebloA PuebloB km`.
+**Representación:** lista de adyacencia (diccionario de diccionarios), la recomendada para grafos dispersos: hay 10 de las 21 aristas posibles. Las conexiones están en `pueblos.txt`, una por línea: `PuebloA PuebloB km`.
+
+## Justificación del algoritmo
+
+| Algoritmo | ¿Por qué sí o por qué no? |
+|-----------|---------------------------|
+| **Dijkstra** ✔ | Todas las distancias son positivas y cada consulta va de **un** origen a **un** destino. Con cola de prioridad es **O((V + E) log V)**, el más eficiente de los tres. |
+| Floyd-Warshall | Calcula todos los pares con una matriz V×V, O(V³). Es trabajo de más para una sola consulta. |
+| Bellman-Ford | Solo se necesita con pesos negativos, que en kilómetros no existen. Es más lento: O(V·E). |
 
 ## Cómo funciona Dijkstra aquí
 
@@ -31,36 +46,45 @@ Las conexiones están en `pueblos.txt`, una por línea: `PuebloA PuebloB km`.
 3. Para cada vecino se prueba si pasar por el pueblo actual acorta el camino (*relajación*). Si es así, se actualiza su distancia y su predecesor.
 4. Al terminar, el camino se reconstruye siguiendo los predecesores desde el destino.
 
-Complejidad: **O((V + E) log V)**.
-
 ## Uso
 
 Requiere Python 3.8 o superior. No usa librerías externas.
 
 ```bash
 python ruta_magica.py        # ejecutar el programa
-python test_ruta_magica.py   # correr las pruebas
+python test_ruta_magica.py   # correr las 10 pruebas
 ```
 
-Opciones del menú:
-
-1. **Calcular ruta más corta** entre dos pueblos, con el detalle de cada tramo.
-2. **Ver conexiones del grafo** (lista de adyacencia).
-3. **Distancias mínimas desde un pueblo** hacia todos los demás.
-
-Ejemplo:
+Ejemplo (igual a la "Ejecución Esperada" del enunciado):
 
 ```
-  Zacatlan de las Manzanas --( 48 km)--> Tetela de Ocampo
-  Tetela de Ocampo         --( 68 km)--> Cuetzalan del Progreso
+ Seleccione pueblo de ORIGEN (1-7): 6
+   -> Origen: Xicotepec de Juarez
 
-  Distancia total: 116 km  (2 tramo(s))
+ Seleccione pueblo de DESTINO (1-7): 5
+   -> Destino: Tlatlauquitepec
+
+ Algoritmo utilizado: Dijkstra
+ Calculando ruta mas corta...
+
+================================================================
+   [OK] RUTA ENCONTRADA
+================================================================
+
+   Xicotepec --(115 km)--> Cuetzalan
+   Cuetzalan --( 38 km)--> Tlatlauquitepec
+
+   Ruta completa:
+   Xicotepec -> Cuetzalan -> Tlatlauquitepec
+
+   Distancia total: 153 km
+================================================================
 ```
 
 ## Estructura
 
 ```
-ruta-magica/
+ProyectoRutaMagica/
 ├── ruta_magica.py                  # Programa (versión 2, entregable)
 ├── pueblos.txt                     # Datos del grafo
 ├── test_ruta_magica.py             # Pruebas automáticas
@@ -71,4 +95,4 @@ ruta-magica/
 
 ## Historial
 
-La versión 1 tenía 11 errores. El más grave: no implementaba Dijkstra (era una búsqueda en anchura) y el grafo perdía conexiones al cargarse. Por eso, de Zacatlán a Cuetzalan respondía 170 km en lugar de 116 km. Todos los errores y sus correcciones están documentados en [CAMBIOS.md](CAMBIOS.md).
+La versión 1 tenía 10 errores. El más grave: no implementaba Dijkstra (era una búsqueda en anchura) y el grafo perdía conexiones al cargarse. Por eso, de Zacatlán a Cuetzalan respondía 170 km en lugar de 116 km. Todos los errores y sus correcciones están en [CAMBIOS.md](CAMBIOS.md).

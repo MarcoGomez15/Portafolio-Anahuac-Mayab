@@ -2,6 +2,9 @@
 Ruta Magica -- Proyecto de grafos
 VERSION 1 (ORIGINAL) -- SE CONSERVA SOLO COMO REFERENCIA.
 
+Equipo: Marco Antonio Gomez Fuentes (581874), Amir Moises Hernandez Farah
+(584687), Emiliano Peniche Correa (581158), Rodrigo Quijano Lopez (582035).
+
 Este archivo contiene el codigo original sin cambios en la logica.
 Los comentarios marcados con "ERROR #n" senalan cada falla encontrada
 durante la revision. La correccion de cada error esta en
@@ -92,8 +95,8 @@ def dijkstra(grafo, origen, destino):
 
 
 def mostrar_nombre(clave):
-    # ERROR #10 (menor): muestra "Zacatlan" en la ruta, pero el menu muestra
-    # "Zacatlan de las Manzanas". Deberia usar el diccionario NOMBRES.
+    # (Correcto) La ruta usa nombres cortos, igual que la "Ejecucion
+    # Esperada" del enunciado. No se cuenta como error.
     return clave.replace("_", " ")
 
 
@@ -170,5 +173,5 @@ def main():
 
 
 if __name__ == "__main__":
-    # ERROR #11 (menor): Ctrl+C o fin de entrada muestran un traceback feo.
+    # ERROR #10 (menor): Ctrl+C o fin de entrada muestran un traceback feo.
     main()

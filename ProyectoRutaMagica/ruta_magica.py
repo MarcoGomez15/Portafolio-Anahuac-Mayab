@@ -1,23 +1,42 @@
 """
 Ruta Magica -- Camino mas corto entre Pueblos Magicos de Puebla
 ===============================================================
+Proyecto de grafos
 
-Autor:     Marco Antonio Gomez Fuentes
-Matricula: 581874
-Version:   2.0 (corregida)
+Equipo:
+  Marco Antonio Gomez Fuentes   581874
+  Amir Moises Hernandez Farah   584687
+  Emiliano Peniche Correa       581158
+  Rodrigo Quijano Lopez         582035
 
-Descripcion
------------
-Modela los Pueblos Magicos de Puebla como un GRAFO PONDERADO NO DIRIGIDO:
-  - Vertices: pueblos.
-  - Aristas:  carreteras entre pueblos (se recorren en ambos sentidos).
-  - Pesos:    distancia en kilometros.
+Version: 2.0 (corregida)
 
-Con el algoritmo de Dijkstra calcula la ruta de menor distancia entre
-dos pueblos elegidos por el usuario.
+Modelo del problema
+-------------------
+Los Pueblos Magicos de la Sierra Norte de Puebla forman un GRAFO PONDERADO
+NO DIRIGIDO:
+  - Vertices: los 7 pueblos.
+  - Aristas:  las 10 carreteras que los conectan directamente. Son de doble
+              sentido, por eso el grafo es no dirigido.
+  - Pesos:    distancia por carretera en kilometros.
 
-Los comentarios "[Corrige ERROR #n]" indican que parte del codigo
-reemplaza cada falla de la version 1 (ver versiones/ y CAMBIOS.md).
+Representacion: lista de adyacencia (dict de diccionarios), recomendada en el
+enunciado para grafos dispersos: 7 vertices con solo 10 de 21 aristas posibles.
+
+Justificacion del algoritmo: DIJKSTRA
+-------------------------------------
+  - Todas las distancias son positivas, que es la unica condicion que
+    Dijkstra necesita.
+  - Cada consulta va de UN origen a UN destino (origen unico).
+  - Floyd-Warshall calcula la distancia entre TODOS los pares de pueblos con
+    una matriz V x V: es trabajo de mas para una sola consulta, O(V^3).
+  - Bellman-Ford solo hace falta con pesos negativos, que en kilometros no
+    existen, y es mas lento: O(V * E).
+  - Dijkstra con cola de prioridad (heapq) es O((V + E) log V), el mas
+    eficiente de los tres para este caso.
+
+Los comentarios "[Corrige ERROR #n]" indican que parte del codigo reemplaza
+cada falla de la version 1 (ver versiones/ y CAMBIOS.md).
 
 Ejecucion:  python ruta_magica.py
 Pruebas:    python test_ruta_magica.py
@@ -30,10 +49,10 @@ from pathlib import Path
 # Datos
 # ---------------------------------------------------------------------------
 
-# Archivo con las conexiones, ubicado junto a este script.
+# Archivo con las conexiones (formato del enunciado), junto a este script.
 ARCHIVO_DATOS = Path(__file__).with_name("pueblos.txt")
 
-# Clave interna (sin espacios) -> nombre completo para mostrar.
+# Clave del archivo -> nombre completo para el menu.
 NOMBRES = {
     "Zacatlan": "Zacatlan de las Manzanas",
     "Chignahuapan": "Chignahuapan",
@@ -43,7 +62,7 @@ NOMBRES = {
     "Xicotepec": "Xicotepec de Juarez",
     "Pahuatlan": "Pahuatlan",
 }
-ORDEN = list(NOMBRES.keys())  # orden en que aparecen en el menu
+ORDEN = list(NOMBRES.keys())  # orden del menu (igual al del enunciado)
 
 LINEA = "=" * 64
 INFINITO = float("inf")
@@ -57,7 +76,7 @@ def cargar_grafo(texto):
     """
     Construye el grafo como lista de adyacencia: {pueblo: {vecino: km}}.
 
-    Usar un diccionario de vecinos (en lugar de una lista de tuplas) permite
+    Un diccionario de vecinos (en lugar de una lista de tuplas) permite
     consultar el peso de una arista directamente con grafo[a][b].
     """
     grafo = {clave: {} for clave in NOMBRES}
@@ -72,6 +91,7 @@ def cargar_grafo(texto):
         if len(partes) != 3:
             raise ValueError(f"Linea {num} mal formada: {linea!r}")
         a, b, peso_txt = partes
+        # isdigit() rechaza negativos: Dijkstra no admite pesos negativos.
         if not peso_txt.isdigit():
             raise ValueError(f"Linea {num}: la distancia debe ser un entero >= 0")
         peso = int(peso_txt)
@@ -95,17 +115,17 @@ def leer_datos(ruta=ARCHIVO_DATOS):
 # Algoritmo de Dijkstra
 # ---------------------------------------------------------------------------
 
-def dijkstra_completo(grafo, origen):
+def dijkstra(grafo, origen):
     """
-    Ejecuta Dijkstra desde `origen` hacia todos los vertices.
+    Ejecuta Dijkstra desde `origen`.
 
     Devuelve:
       distancias: {pueblo: km minimos desde origen}  (INFINITO si no hay ruta)
       previo:     {pueblo: pueblo anterior en la ruta mas corta}
 
     [Corrige ERROR #3 y #7] Dijkstra real con cola de prioridad (heapq):
-      siempre se procesa primero el pueblo con MENOR distancia acumulada,
-      y cada arista se "relaja" (se actualiza si se encontro una ruta mas
+      siempre se procesa primero el pueblo con MENOR distancia acumulada y
+      cada arista se "relaja" (se actualiza si se encontro una ruta mas
       corta). Asi se minimizan los kilometros, no el numero de tramos.
     """
     distancias = {pueblo: INFINITO for pueblo in grafo}
@@ -134,7 +154,7 @@ def reconstruir_camino(previo, origen, destino):
     """
     Recorre los predecesores desde el destino hasta el origen.
 
-    [Corrige ERROR #4] En vez de copiar listas en cada paso (lo que causaba
+    [Corrige ERROR #4] En vez de copiar listas en cada paso (lo que hacia
     que varias rutas compartieran la misma lista), se guarda solo el
     predecesor de cada pueblo y el camino se arma al final.
     """
@@ -152,120 +172,61 @@ def ruta_mas_corta(grafo, origen, destino):
     [Corrige ERROR #8] Si no existe ruta devuelve ([], None), para no
     confundirlo con distancia 0 (origen igual a destino).
     """
-    distancias, previo = dijkstra_completo(grafo, origen)
+    distancias, previo = dijkstra(grafo, origen)
     if distancias[destino] == INFINITO:
         return [], None
     return reconstruir_camino(previo, origen, destino), distancias[destino]
 
 
 # ---------------------------------------------------------------------------
-# Entrada y salida
+# Entrada y salida (formato de la "Ejecucion Esperada" del enunciado)
 # ---------------------------------------------------------------------------
 
 def mostrar_nombre(clave):
-    """[Corrige ERROR #10] Usa el nombre completo, igual que el menu."""
-    return NOMBRES.get(clave, clave.replace("_", " "))
+    """Nombre corto para la ruta, como en el enunciado: 'Tetela de Ocampo'."""
+    return clave.replace("_", " ")
 
 
 def pedir_pueblo(texto):
-    """Pide un numero de pueblo hasta que sea valido."""
+    """Pide un numero de pueblo hasta que sea valido y devuelve su clave."""
     while True:
         try:
-            opcion = int(input(f"Seleccione pueblo de {texto} (1-{len(ORDEN)}): "))
+            opcion = int(input(f" Seleccione pueblo de {texto} (1-{len(ORDEN)}): "))
             # [Corrige ERROR #5] Rango inclusivo: 1 y 7 tambien son validos.
             if 1 <= opcion <= len(ORDEN):
                 return ORDEN[opcion - 1]
         except ValueError:
             pass
-        print("  Opcion invalida, intente de nuevo.")
-
-
-def listar_pueblos():
-    print("Pueblos Magicos disponibles:")
-    for i, clave in enumerate(ORDEN, start=1):
-        print(f"  {i}. {NOMBRES[clave]}")
-    print()
+        print("   Opcion invalida, intente de nuevo.")
 
 
 def imprimir_resultado(grafo, camino, total):
     print()
     print(LINEA)
     if not camino:
-        print("  [X] NO EXISTE RUTA ENTRE ESOS PUEBLOS")
+        print("   [X] NO EXISTE RUTA ENTRE ESOS PUEBLOS")
         print(LINEA)
         return
 
-    print("  [OK] RUTA ENCONTRADA")
+    print("   [OK] RUTA ENCONTRADA")
     print(LINEA)
     print()
     if len(camino) == 1:
-        print("  El origen y el destino son el mismo pueblo.")
+        print("   El origen y el destino son el mismo pueblo.")
     else:
-        ancho = max(len(mostrar_nombre(p)) for p in camino)
-        for a, b in zip(camino, camino[1:]):
-            # [Corrige ERROR #6] Peso exacto del tramo a -> b.
+        tramos = list(zip(camino, camino[1:]))
+        ancho = max(len(mostrar_nombre(a)) for a, _ in tramos)
+        # [Corrige ERROR #6] Peso exacto del tramo a -> b.
+        ancho_km = max(len(str(grafo[a][b])) for a, b in tramos)
+        for a, b in tramos:
             peso = grafo[a][b]
-            print(f"  {mostrar_nombre(a):<{ancho}} --({peso:>3} km)--> {mostrar_nombre(b)}")
+            print(f"   {mostrar_nombre(a):<{ancho}} --({peso:>{ancho_km}} km)--> "
+                  f"{mostrar_nombre(b)}")
     print()
-    print("  Ruta completa:")
-    print("  " + " -> ".join(mostrar_nombre(p) for p in camino))
+    print("   Ruta completa:")
+    print("   " + " -> ".join(mostrar_nombre(p) for p in camino))
     print()
-    print(f"  Distancia total: {total} km  ({len(camino) - 1} tramo(s))")
-    print(LINEA)
-
-
-def opcion_ruta(grafo):
-    """Opcion 1: ruta mas corta entre dos pueblos."""
-    listar_pueblos()
-    origen = pedir_pueblo("ORIGEN")
-    print(f"  -> Origen: {NOMBRES[origen]}")
-    destino = pedir_pueblo("DESTINO")
-    print(f"  -> Destino: {NOMBRES[destino]}")
-    print()
-    print("Algoritmo utilizado: Dijkstra")
-    camino, total = ruta_mas_corta(grafo, origen, destino)
-    imprimir_resultado(grafo, camino, total)
-
-
-def opcion_conexiones(grafo):
-    """Opcion 2: muestra la lista de adyacencia del grafo."""
-    print()
-    print(LINEA)
-    print("  CONEXIONES DIRECTAS (lista de adyacencia)")
-    print(LINEA)
-    total_aristas = sum(len(v) for v in grafo.values()) // 2
-    for clave in ORDEN:
-        vecinos = ", ".join(
-            f"{mostrar_nombre(v)} ({km} km)"
-            for v, km in sorted(grafo[clave].items(), key=lambda x: x[1])
-        )
-        print(f"  {mostrar_nombre(clave)}:")
-        print(f"      {vecinos or '(sin conexiones)'}")
-    print()
-    print(f"  Vertices: {len(grafo)}   Aristas: {total_aristas}")
-    print(LINEA)
-
-
-def opcion_tabla(grafo):
-    """Opcion 3: distancias minimas desde un pueblo hacia todos los demas."""
-    listar_pueblos()
-    origen = pedir_pueblo("ORIGEN")
-    distancias, previo = dijkstra_completo(grafo, origen)
-
-    print()
-    print(LINEA)
-    print(f"  DISTANCIAS MINIMAS DESDE {mostrar_nombre(origen).upper()}")
-    print(LINEA)
-    ancho = max(len(mostrar_nombre(p)) for p in ORDEN)
-    for destino in sorted(ORDEN, key=lambda p: distancias[p]):
-        if destino == origen:
-            continue
-        if distancias[destino] == INFINITO:
-            print(f"  {mostrar_nombre(destino):<{ancho}}   sin ruta")
-            continue
-        anterior = mostrar_nombre(previo[destino])
-        print(f"  {mostrar_nombre(destino):<{ancho}}  {distancias[destino]:>4} km"
-              f"   (llega desde {anterior})")
+    print(f"   Distancia total: {total} km")
     print(LINEA)
 
 
@@ -274,37 +235,43 @@ def main():
 
     print(LINEA)
     print("         RUTA MAGICA -- PUEBLA")
-    print("   Camino mas corto entre Pueblos Magicos")
+    print("    Camino mas corto entre Pueblos Magicos")
     print(LINEA)
+    print()
+    print(" Pueblos Magicos disponibles:")
+    for i, clave in enumerate(ORDEN, start=1):
+        print(f"   {i}. {NOMBRES[clave]}")
+    print()
 
-    opciones = {
-        "1": ("Calcular ruta mas corta entre dos pueblos", opcion_ruta),
-        "2": ("Ver conexiones del grafo", opcion_conexiones),
-        "3": ("Distancias minimas desde un pueblo", opcion_tabla),
-    }
-
+    primera = True
     while True:
+        origen = pedir_pueblo("ORIGEN")
+        print(f"   -> Origen: {NOMBRES[origen]}")
         print()
-        for num, (texto, _) in opciones.items():
-            print(f"  {num}. {texto}")
-        print("  0. Salir")
-        eleccion = input("Elija una opcion: ").strip()
+        destino = pedir_pueblo("DESTINO")
+        print(f"   -> Destino: {NOMBRES[destino]}")
         print()
+        if primera:  # el enunciado lo muestra solo en la primera consulta
+            print(" Algoritmo utilizado: Dijkstra")
+            primera = False
+        print(" Calculando ruta mas corta...")
 
-        if eleccion == "0":
-            print("Gracias por usar Ruta Magica.")
+        camino, total = ruta_mas_corta(grafo, origen, destino)
+        imprimir_resultado(grafo, camino, total)
+
+        print()
+        resp = input(" Desea consultar otra ruta? (S/N): ").strip().upper()
+        if resp != "S":
+            print(" Gracias por usar Ruta Magica.")
             break
-        if eleccion in opciones:
-            opciones[eleccion][1](grafo)
-        else:
-            print("  Opcion invalida, intente de nuevo.")
+        print()
 
 
 if __name__ == "__main__":
     try:
         main()
     except (KeyboardInterrupt, EOFError):
-        # [Corrige ERROR #11] Salida limpia con Ctrl+C o fin de entrada.
-        print("\nPrograma terminado por el usuario.")
+        # [Corrige ERROR #10] Salida limpia con Ctrl+C o fin de entrada.
+        print("\n Programa terminado por el usuario.")
     except FileNotFoundError:
-        print(f"No se encontro el archivo de datos: {ARCHIVO_DATOS}")
+        print(f" No se encontro el archivo de datos: {ARCHIVO_DATOS}")
