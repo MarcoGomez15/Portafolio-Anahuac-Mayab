@@ -1,0 +1,12 @@
+# Pueblos Magicos de Puebla -- Distancias por carretera en km
+# Formato: PuebloA PuebloB Distancia   (las conexiones son de doble sentido)
+Zacatlan Chignahuapan 22
+Zacatlan Tetela_de_Ocampo 48
+Chignahuapan Tetela_de_Ocampo 42
+Tetela_de_Ocampo Cuetzalan 68
+Cuetzalan Tlatlauquitepec 38
+Zacatlan Xicotepec 55
+Xicotepec Pahuatlan 32
+Pahuatlan Zacatlan 60
+Chignahuapan Tlatlauquitepec 90
+Xicotepec Cuetzalan 115
